@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		04282775214C217C003775C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282774214C217C003775C6 /* AppDelegate.swift */; };
-		04282777214C217C003775C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282776214C217C003775C6 /* ViewController.swift */; };
+		04282777214C217C003775C6 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282776214C217C003775C6 /* HomeVC.swift */; };
 		0428277A214C217C003775C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04282778214C217C003775C6 /* Main.storyboard */; };
 		0428277C214C217D003775C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0428277B214C217D003775C6 /* Assets.xcassets */; };
 		0428277F214C217D003775C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0428277D214C217D003775C6 /* LaunchScreen.storyboard */; };
+		0428278D214C22CF003775C6 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428278C214C22CF003775C6 /* CommentVC.swift */; };
+		0428278F214C22E9003775C6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428278E214C22E9003775C6 /* Constant.swift */; };
+		04282791214C234B003775C6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282790214C234B003775C6 /* Post.swift */; };
+		04282793214C236C003775C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282792214C236C003775C6 /* User.swift */; };
+		04282795214C2E5D003775C6 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282794214C2E5D003775C6 /* ApiServices.swift */; };
+		04282797214C2E9C003775C6 /* DownloadPostDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */; };
+		0428279A214C31B6003775C6 /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282798214C31B6003775C6 /* PostFeedCell.swift */; };
+		0428279B214C31B6003775C6 /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04282799214C31B6003775C6 /* PostFeedCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04282771214C217C003775C6 /* socialeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04282774214C217C003775C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04282776214C217C003775C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04282776214C217C003775C6 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		04282779214C217C003775C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0428277B214C217D003775C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0428277E214C217D003775C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04282780214C217D003775C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0428278C214C22CF003775C6 /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		0428278E214C22E9003775C6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		04282790214C234B003775C6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		04282792214C236C003775C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		04282794214C2E5D003775C6 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
+		04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPostDelegate.swift; sourceTree = "<group>"; };
+		04282798214C31B6003775C6 /* PostFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedCell.swift; sourceTree = "<group>"; };
+		04282799214C31B6003775C6 /* PostFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFeedCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +70,70 @@
 		04282773214C217C003775C6 /* socialeo */ = {
 			isa = PBXGroup;
 			children = (
+				0428278B214C226A003775C6 /* Model */,
+				0428278A214C225F003775C6 /* View */,
+				04282789214C2250003775C6 /* Controller */,
+				04282788214C2231003775C6 /* API SERVICE */,
+				04282787214C220C003775C6 /* Protocols */,
+				04282786214C2202003775C6 /* Helper */,
 				04282774214C217C003775C6 /* AppDelegate.swift */,
-				04282776214C217C003775C6 /* ViewController.swift */,
 				04282778214C217C003775C6 /* Main.storyboard */,
 				0428277B214C217D003775C6 /* Assets.xcassets */,
 				0428277D214C217D003775C6 /* LaunchScreen.storyboard */,
 				04282780214C217D003775C6 /* Info.plist */,
 			);
 			path = socialeo;
+			sourceTree = "<group>";
+		};
+		04282786214C2202003775C6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0428278E214C22E9003775C6 /* Constant.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		04282787214C220C003775C6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		04282788214C2231003775C6 /* API SERVICE */ = {
+			isa = PBXGroup;
+			children = (
+				04282794214C2E5D003775C6 /* ApiServices.swift */,
+			);
+			path = "API SERVICE";
+			sourceTree = "<group>";
+		};
+		04282789214C2250003775C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04282776214C217C003775C6 /* HomeVC.swift */,
+				0428278C214C22CF003775C6 /* CommentVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0428278A214C225F003775C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04282798214C31B6003775C6 /* PostFeedCell.swift */,
+				04282799214C31B6003775C6 /* PostFeedCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0428278B214C226A003775C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04282790214C234B003775C6 /* Post.swift */,
+				04282792214C236C003775C6 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +197,7 @@
 				0428277F214C217D003775C6 /* LaunchScreen.storyboard in Resources */,
 				0428277C214C217D003775C6 /* Assets.xcassets in Resources */,
 				0428277A214C217C003775C6 /* Main.storyboard in Resources */,
+				0428279B214C31B6003775C6 /* PostFeedCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +208,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04282777214C217C003775C6 /* ViewController.swift in Sources */,
+				0428278D214C22CF003775C6 /* CommentVC.swift in Sources */,
+				04282795214C2E5D003775C6 /* ApiServices.swift in Sources */,
+				04282777214C217C003775C6 /* HomeVC.swift in Sources */,
+				04282793214C236C003775C6 /* User.swift in Sources */,
 				04282775214C217C003775C6 /* AppDelegate.swift in Sources */,
+				0428278F214C22E9003775C6 /* Constant.swift in Sources */,
+				04282797214C2E9C003775C6 /* DownloadPostDelegate.swift in Sources */,
+				0428279A214C31B6003775C6 /* PostFeedCell.swift in Sources */,
+				04282791214C234B003775C6 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FirstRepublic.socialeo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,7 +388,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FirstRepublic.socialeo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
