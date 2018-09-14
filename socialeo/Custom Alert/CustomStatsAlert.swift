@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CustomStatsAlert: UIView, CommonModal, AlertActionButtonDelegate {
+class CustomStatsAlert: UIView, Modal, AlertActionButtonDelegate {
+    
     
     var statsAlertView: CustomStatsAlertView = CustomStatsAlertView ()
     let backgroundView: UIView = UIView()
@@ -38,8 +39,8 @@ class CustomStatsAlert: UIView, CommonModal, AlertActionButtonDelegate {
     
     func initialize(forAlertTitle title:String, withMessage message: String){
         
-        self.commonAlertView.clipsToBounds = true
-        self.commonAlertView.delegate = self
+        self.statsAlertView.clipsToBounds = true
+        self.statsAlertView.delegate = self
         
         backgroundView.frame = frame
         backgroundView.backgroundColor = UIColor.black
