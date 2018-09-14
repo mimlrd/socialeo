@@ -20,6 +20,7 @@
 		04282797214C2E9C003775C6 /* DownloadPostDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */; };
 		0428279A214C31B6003775C6 /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282798214C31B6003775C6 /* PostFeedCell.swift */; };
 		0428279B214C31B6003775C6 /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04282799214C31B6003775C6 /* PostFeedCell.xib */; };
+		3879D857A1C1B10B1B44B6C1 /* Pods_socialeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPostDelegate.swift; sourceTree = "<group>"; };
 		04282798214C31B6003775C6 /* PostFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedCell.swift; sourceTree = "<group>"; };
 		04282799214C31B6003775C6 /* PostFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFeedCell.xib; sourceTree = "<group>"; };
+		6EC30E6E30C5019FC8664C6E /* Pods-socialeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.debug.xcconfig"; sourceTree = "<group>"; };
+		7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socialeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B2FC9C36A8D4079D8F81AE4 /* Pods-socialeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3879D857A1C1B10B1B44B6C1 /* Pods_socialeo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,8 @@
 			children = (
 				04282773214C217C003775C6 /* socialeo */,
 				04282772214C217C003775C6 /* Products */,
+				F0481707E3124AE180547F0F /* Pods */,
+				9341DACC7D8134F10A23DBFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +143,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9341DACC7D8134F10A23DBFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0481707E3124AE180547F0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EC30E6E30C5019FC8664C6E /* Pods-socialeo.debug.xcconfig */,
+				7B2FC9C36A8D4079D8F81AE4 /* Pods-socialeo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04282783214C217D003775C6 /* Build configuration list for PBXNativeTarget "socialeo" */;
 			buildPhases = (
+				A3EF9D59D434AC638CC36045 /* [CP] Check Pods Manifest.lock */,
 				0428276D214C217C003775C6 /* Sources */,
 				0428276E214C217C003775C6 /* Frameworks */,
 				0428276F214C217C003775C6 /* Resources */,
+				8176DD22604E542A55A77DCB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +228,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8176DD22604E542A55A77DCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-socialeo/Pods-socialeo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-socialeo/Pods-socialeo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3EF9D59D434AC638CC36045 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-socialeo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0428276D214C217C003775C6 /* Sources */ = {
@@ -358,6 +423,7 @@
 		};
 		04282784214C217D003775C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EC30E6E30C5019FC8664C6E /* Pods-socialeo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +442,7 @@
 		};
 		04282785214C217D003775C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B2FC9C36A8D4079D8F81AE4 /* Pods-socialeo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
