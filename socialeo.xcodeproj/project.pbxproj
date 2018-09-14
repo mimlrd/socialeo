@@ -20,6 +20,12 @@
 		04282797214C2E9C003775C6 /* DownloadPostDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */; };
 		0428279A214C31B6003775C6 /* PostFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282798214C31B6003775C6 /* PostFeedCell.swift */; };
 		0428279B214C31B6003775C6 /* PostFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04282799214C31B6003775C6 /* PostFeedCell.xib */; };
+		0428279D214C5768003775C6 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428279C214C5768003775C6 /* Extentions.swift */; };
+		042827A0214C5F08003775C6 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428279F214C5F08003775C6 /* Modal.swift */; };
+		042827A2214C5F41003775C6 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A1214C5F41003775C6 /* AlertProtocol.swift */; };
+		042827A4214C5FEC003775C6 /* CustomStatsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A3214C5FEC003775C6 /* CustomStatsAlertView.swift */; };
+		042827A6214C6136003775C6 /* CustomStatsAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042827A5214C6136003775C6 /* CustomStatsAlertView.xib */; };
+		042827A8214C644F003775C6 /* CustomStatsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A7214C644F003775C6 /* CustomStatsAlert.swift */; };
 		3879D857A1C1B10B1B44B6C1 /* Pods_socialeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +45,12 @@
 		04282796214C2E9C003775C6 /* DownloadPostDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadPostDelegate.swift; sourceTree = "<group>"; };
 		04282798214C31B6003775C6 /* PostFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedCell.swift; sourceTree = "<group>"; };
 		04282799214C31B6003775C6 /* PostFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFeedCell.xib; sourceTree = "<group>"; };
+		0428279C214C5768003775C6 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		0428279F214C5F08003775C6 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		042827A1214C5F41003775C6 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
+		042827A3214C5FEC003775C6 /* CustomStatsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStatsAlertView.swift; sourceTree = "<group>"; };
+		042827A5214C6136003775C6 /* CustomStatsAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStatsAlertView.xib; sourceTree = "<group>"; };
+		042827A7214C644F003775C6 /* CustomStatsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStatsAlert.swift; sourceTree = "<group>"; };
 		6EC30E6E30C5019FC8664C6E /* Pods-socialeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.debug.xcconfig"; sourceTree = "<group>"; };
 		7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socialeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2FC9C36A8D4079D8F81AE4 /* Pods-socialeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,12 +89,13 @@
 		04282773214C217C003775C6 /* socialeo */ = {
 			isa = PBXGroup;
 			children = (
-				0428278B214C226A003775C6 /* Model */,
-				0428278A214C225F003775C6 /* View */,
-				04282789214C2250003775C6 /* Controller */,
+				0428279E214C5EC1003775C6 /* Custom Alert */,
 				04282788214C2231003775C6 /* API SERVICE */,
 				04282787214C220C003775C6 /* Protocols */,
 				04282786214C2202003775C6 /* Helper */,
+				0428278B214C226A003775C6 /* Model */,
+				0428278A214C225F003775C6 /* View */,
+				04282789214C2250003775C6 /* Controller */,
 				04282774214C217C003775C6 /* AppDelegate.swift */,
 				04282778214C217C003775C6 /* Main.storyboard */,
 				0428277B214C217D003775C6 /* Assets.xcassets */,
@@ -96,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0428278E214C22E9003775C6 /* Constant.swift */,
+				0428279C214C5768003775C6 /* Extentions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -141,6 +155,18 @@
 				04282792214C236C003775C6 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0428279E214C5EC1003775C6 /* Custom Alert */ = {
+			isa = PBXGroup;
+			children = (
+				0428279F214C5F08003775C6 /* Modal.swift */,
+				042827A1214C5F41003775C6 /* AlertProtocol.swift */,
+				042827A3214C5FEC003775C6 /* CustomStatsAlertView.swift */,
+				042827A5214C6136003775C6 /* CustomStatsAlertView.xib */,
+				042827A7214C644F003775C6 /* CustomStatsAlert.swift */,
+			);
+			path = "Custom Alert";
 			sourceTree = "<group>";
 		};
 		9341DACC7D8134F10A23DBFC /* Frameworks */ = {
@@ -220,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042827A6214C6136003775C6 /* CustomStatsAlertView.xib in Resources */,
 				0428277F214C217D003775C6 /* LaunchScreen.storyboard in Resources */,
 				0428277C214C217D003775C6 /* Assets.xcassets in Resources */,
 				0428277A214C217C003775C6 /* Main.storyboard in Resources */,
@@ -273,13 +300,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042827A2214C5F41003775C6 /* AlertProtocol.swift in Sources */,
+				042827A4214C5FEC003775C6 /* CustomStatsAlertView.swift in Sources */,
+				042827A0214C5F08003775C6 /* Modal.swift in Sources */,
 				0428278D214C22CF003775C6 /* CommentVC.swift in Sources */,
 				04282795214C2E5D003775C6 /* ApiServices.swift in Sources */,
+				0428279D214C5768003775C6 /* Extentions.swift in Sources */,
 				04282777214C217C003775C6 /* HomeVC.swift in Sources */,
 				04282793214C236C003775C6 /* User.swift in Sources */,
 				04282775214C217C003775C6 /* AppDelegate.swift in Sources */,
 				0428278F214C22E9003775C6 /* Constant.swift in Sources */,
 				04282797214C2E9C003775C6 /* DownloadPostDelegate.swift in Sources */,
+				042827A8214C644F003775C6 /* CustomStatsAlert.swift in Sources */,
 				0428279A214C31B6003775C6 /* PostFeedCell.swift in Sources */,
 				04282791214C234B003775C6 /* Post.swift in Sources */,
 			);

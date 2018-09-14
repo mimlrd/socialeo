@@ -25,6 +25,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setTitleLabl()
         setupTable()
         
         // Download the posts from Instagram servers
@@ -42,6 +43,36 @@ class HomeVC: UIViewController {
         let nibCell = UINib(nibName: nibCellName , bundle: nil)
         instaFeedTable.register(nibCell, forCellReuseIdentifier: cellId)
         
+    }
+    
+    
+    func setTitleLabl() {
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height ))
+        titleLabel.text = "socialeo"
+        titleLabel.font = UIFont(name: "AvenirNex-Medium", size: 20)
+        titleLabel.textColor = .black
+        navigationItem.titleView = titleLabel
+        
+        setupNavbarButtons()
+    }
+    
+    
+    func setupNavbarButtons() {
+        
+        
+        let statsImage = UIImage(named: "stats.png")
+        
+        let statsBarBtn = UIBarButtonItem(image: statsImage, style: .plain, target: self, action: #selector(pushFilterButton))
+        statsBarBtn.tintColor = .black // Change the colour to black to adapt to the feel and look of the app
+    
+        
+        navigationItem.rightBarButtonItems = [statsBarBtn]
+    }
+    
+    
+    @objc fileprivate func pushFilterButton(){
+
     }
     
     

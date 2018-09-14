@@ -1,5 +1,4 @@
 
-Project Title
 SOCIALEO - A test app for the mobile team at ENABLON
 
 Getting Started

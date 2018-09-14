@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PostFeedCell: UITableViewCell {
     
@@ -23,6 +24,8 @@ class PostFeedCell: UITableViewCell {
     @IBOutlet weak var postCaptionLbl: UILabel!
     
     @IBOutlet weak var postNbrCommentLbl: UILabel!
+    
+    var homeVC: HomeVC?
     
     var instaPost: InstaPost? {
         
@@ -51,12 +54,18 @@ class PostFeedCell: UITableViewCell {
             let text = post.captionText
             let username = post.author.username
             let avatar_url = post.author.profilePictureUrl
-            let postImage_url = post.standardImage["url"]
+            let postImage_url = post.standardImage["url"] as! String
             let fullName = post.author.fullname
             let nbr_like = post.likeCount
             let nbr_comment = post.commentCount
+            let timestamp = post.timestamp
+            let date = Date(timeIntervalSince1970: timestamp)
             
+            self.postUserImageView.roundingImageView()
             
+            // Will download the different images for the cell using SDWebImage for caching and asynchronous download
+            downloadPostAuthorInfo(forImageView: postUserImageView, withImageUrl: avatar_url)
+            downloadPostAuthorInfo(forImageView: postImageView, withImageUrl: postImage_url)
             
             var likes = NSLocalizedString("like", comment: "like_singular")
             var comments = NSLocalizedString("comment", comment: "comment_singular")
@@ -66,7 +75,7 @@ class PostFeedCell: UITableViewCell {
             }
             
             if nbr_comment > 1 {
-                likes = NSLocalizedString("comments", comment: "comments")
+                comments = NSLocalizedString("comments", comment: "comments")
             }
             
             if nbr_comment > 0 {
@@ -77,11 +86,20 @@ class PostFeedCell: UITableViewCell {
             
             self.postCaptionLbl.text = text
             self.postCaptionLbl.text = "\(username): \(text)"
-            self.postUserFullNameLbl.text = fullName
+            self.postUserFullNameLbl.text = fullName.lowercased()
             self.postNbrLikeLbl.text = "\(nbr_like) \(likes)"
             self.postNbrCommentLbl.text = "\(viewComments) \(nbr_comment) \(comments)"
+            self.postDateLbl.text = date.getElapsedInterval()
         }
     }
+    
+    
+    
+    fileprivate func downloadPostAuthorInfo(forImageView imageView: UIImageView, withImageUrl  urlStr: String){
+        let url = URL(string: urlStr)
+        
+        imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.png"))
+        }
     
     
     
