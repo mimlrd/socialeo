@@ -151,9 +151,10 @@ class ApiServices: NSObject {
                     
                     for (key, value) in results {
                         // only get the value for the key data, as this is where data that interest us are
+                        
                         if key == "data" {
                             //let dict = value as? [String: Any]
-                            
+                            print("comments: \(value)")
                             guard let valArray = value as? [Any] else {return}
                             // print("+++++++++ value: \(valArray) +++++++")
                             self.setupTheValue(valArray)

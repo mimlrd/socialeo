@@ -18,7 +18,7 @@ class CommentCell: UICollectionViewCell {
     
     var comment: InstaComment? {
         didSet{
-            
+            setupCell()
         }
     }
     

@@ -24,6 +24,7 @@ class HomeVC: UIViewController {
     var startingImageView: UIImageView?
     var isZooming: Bool = false
     var originalImageCenter:CGPoint?
+    var selectedPostID: String = ""
     
     
     override func viewDidLoad() {
@@ -102,7 +103,8 @@ class HomeVC: UIViewController {
     //Mark: - segue to the commentVC
     
     
-    func pushView() {
+    func pushView(withPostId id:String) {
+        self.selectedPostID = id
         self.performSegue(withIdentifier: IDENTIFIERS.seguehomeVCToCommentVC, sender: self)
     }
     
@@ -111,7 +113,7 @@ class HomeVC: UIViewController {
         if segue.identifier == IDENTIFIERS.seguehomeVCToCommentVC {
             if let vc = segue.destination as? CommentVC {
                 
-               // vc.comments =
+               vc.selectedPostID = self.selectedPostID
             }
         }
         

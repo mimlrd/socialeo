@@ -22,6 +22,8 @@ class CommentVC: UIViewController {
     
     var comments: [InstaComment]?
     
+    var selectedPostID: String? 
+    
     let cellName = IDENTIFIERS.commentCellIdentifier
     
     
@@ -31,6 +33,8 @@ class CommentVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        performCommentDownload() // To download the comments
 
         let swipeGesture = UISwipeGestureRecognizer(target: self , action: #selector(swipeDownGesture(swipe:)))
         swipeGesture.direction = .down
@@ -45,6 +49,17 @@ class CommentVC: UIViewController {
         setupNavBar()
         configureCollectionView()
         configureNotifications()
+    }
+    
+    fileprivate func performCommentDownload(){
+        // Download the posts from Instagram servers
+        
+        if let postId = selectedPostID {
+            let apiServices = ApiServices()
+            apiServices.downloadDelegate = self
+            apiServices.fetchCommentForPost(postId)
+        }
+        
     }
     
     
@@ -135,6 +150,23 @@ class CommentVC: UIViewController {
     }
 
    
+}
+
+extension CommentVC: FinishDownloadDelegate {
+    
+    func finishToDownloadPosts<T>(_ elements: [T]) {
+        
+        guard let download_comments = elements as? [InstaComment] else {return}
+        
+        self.comments = download_comments.sorted(by: { (comment1, comment2) in
+            
+            comment1.timestamp > comment2.timestamp
+        })
+        
+        DispatchQueue.main.async {
+            self.commentFeedCollection.reloadData()
+        }
+    }
 }
 
 

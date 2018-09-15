@@ -27,6 +27,8 @@ class PostFeedCell: UITableViewCell {
     
     var homeVC: HomeVC?
     
+    var postId: String?
+    
     var instaPost: InstaPost? {
         
         didSet{
@@ -60,6 +62,8 @@ class PostFeedCell: UITableViewCell {
             let nbr_comment = post.commentCount
             let timestamp = post.timestamp
             let date = Date(timeIntervalSince1970: timestamp)
+            
+            postId = post.id // to pass to homeVC so we can download the comments
             
             self.postUserImageView.roundingImageView()
             
@@ -116,9 +120,9 @@ class PostFeedCell: UITableViewCell {
         /// Let the HomeVC know that the user has tapped the label and want to segue to CommentVC
         print("want to segue")
         
-        if let homeViewController = homeVC {
+        if let homeViewController = homeVC, let selectedPostId = postId{
             
-           homeViewController.pushView()
+            homeViewController.pushView(withPostId: selectedPostId)
         }
         
     
