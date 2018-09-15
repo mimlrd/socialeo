@@ -6,6 +6,9 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
+
+/// An extension file to help with commonly used functionalities.
+
 import UIKit
 
 extension Date

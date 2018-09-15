@@ -30,10 +30,18 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        performCommentDownload()
         setTitleLabl()
         setupTable()
         
+        // TODO: we can add a later date eaither an observer to show when new comments have been added to the server, the view will need to fetch them OR we can add a refresh function with a pull collectionView to reload
+        
         // Download the posts from Instagram servers
+        
+    }
+    
+    fileprivate func performCommentDownload(){
+        
         let apiServices = ApiServices()
         apiServices.downloadDelegate = self
         apiServices.fetchInstagramPosts()
@@ -52,10 +60,11 @@ class HomeVC: UIViewController {
     
     
     func setTitleLabl() {
-        
+        // Setup the title bar, we can customise the text here or add a logo instead
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height ))
         titleLabel.text = "socialeo"
-        titleLabel.font = UIFont(name: "AvenirNex-Medium", size: 20)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.font = UIFont(name: "AvenirNext-Medium", size: 25)
         titleLabel.textColor = .black
         navigationItem.titleView = titleLabel
         
@@ -65,7 +74,7 @@ class HomeVC: UIViewController {
     
     func setupNavbarButtons() {
         
-        
+        /// setup the navbar buttons
         let statsImage = UIImage(named: "stats.png")
         
         let statsBarBtn = UIBarButtonItem(image: statsImage, style: .plain, target: self, action: #selector(pushStatsButton))
@@ -82,6 +91,7 @@ class HomeVC: UIViewController {
     }
     
     private func getTheSocialStatsForUser(){
+        // each time that the stats button is pushed we will get the latest stats for the user. For that we will need to add and observer to sync the latest post with the server.
         
         guard let socialStatsDict  = UserDefaults.standard.dictionary(forKey: "socialStats") as? [String:Int] else {return}
         
@@ -126,13 +136,13 @@ class HomeVC: UIViewController {
 
 
 extension HomeVC: FinishDownloadDelegate {
-    
+    // the custom delegate function which is called when the comments have been downloaded from the server
     func finishToDownloadPosts<T>(_ elements: [T]) {
-        
+        // As the element are generics, we will need to cast them as an array of Instapost to work with them
         if let my_posts = elements as? [InstaPost] {
             
             self.posts.removeAll()
-            
+            // Sort the array by date
             self.posts = my_posts.sorted(by: { (post1, post2) -> Bool in
                 post1.timestamp > post2.timestamp
             })
@@ -214,6 +224,7 @@ extension HomeVC: UIGestureRecognizerDelegate {
     
     
     // custom zooming logic
+    // we can refactor this function and put it in a different file to avoid clustering this viewcontroller and to make it reuseable
     func performZoomInForStartingImageView(_ startingImageView: UIImageView) {
         
         self.startingImageView = startingImageView
@@ -282,6 +293,7 @@ extension HomeVC: UIGestureRecognizerDelegate {
     
     @objc func pinch(sender:UIPinchGestureRecognizer) {
         
+        // This function also could be refactor and amke it in a differnt file to make it reusable.
         guard let imageView = sender.view  else {return}
         
         if sender.state == .began {

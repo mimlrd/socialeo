@@ -118,8 +118,6 @@ class PostFeedCell: UITableViewCell {
     @objc private func handleTapGesture() {
         
         /// Let the HomeVC know that the user has tapped the label and want to segue to CommentVC
-        print("want to segue")
-        
         if let homeViewController = homeVC, let selectedPostId = postId{
             
             homeViewController.pushView(withPostId: selectedPostId)

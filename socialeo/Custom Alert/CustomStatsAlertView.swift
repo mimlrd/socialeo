@@ -6,9 +6,10 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
+/// Class for the custom view 
 import UIKit
 
-class CustomStatsAlertView: UIView {
+class CustomStatsAlertView: BaseView {
     
     @IBOutlet var customStatsAlertView: UIView!
     

@@ -71,12 +71,12 @@
         <!--CommentVC-->
         <scene sceneID="KTW-Kj-sLp">
             <objects>
-                <viewController storyboardIdentifier="commentVC" hidesBottomBarWhenPushed="YES" id="QhV-YA-Ebl" customClass="CommentVC" customModule="socialeo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="commentVC" hidesBottomBarWhenPushed="YES" id="QhV-YA-Ebl" customClass="CommentVC" customModule="socialeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkP-Gj-Quq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf5-SY-opO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zf5-SY-opO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hz4-J3-xD8">

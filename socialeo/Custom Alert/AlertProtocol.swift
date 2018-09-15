@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 protocol AlertActionButtonDelegate: class {
-    
+    /// protocol to let views know that a button has been tapped from a cell
+    /// required function to be implemented
     func didTapDoneActionButton()
 }
 

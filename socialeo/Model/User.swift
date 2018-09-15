@@ -6,8 +6,10 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
-import Foundation
 
+/// Models to be used within the app
+
+import Foundation
 
 struct InstaUser {
     

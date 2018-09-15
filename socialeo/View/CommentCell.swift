@@ -19,18 +19,19 @@ class CommentCell: UICollectionViewCell {
     var comment: InstaComment? {
         didSet{
             setupCell()
+
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Calling the function allow dynamic resizing of the cell
         initializeCell()
-
     }
     
     private func initializeCell(){
-        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
         let screenWidth = UIScreen.main.bounds.width
         containerWidthConstraint.constant = screenWidth - (2 * 12)
     }
@@ -40,15 +41,16 @@ class CommentCell: UICollectionViewCell {
         
         guard let my_comment = comment else {return}
         
+        // Convenient variables
         let username = my_comment.username
         let text = my_comment.text
         let timestamp = my_comment.timestamp
         let date = Date(timeIntervalSince1970: timestamp)
         
-        
+        // Give a feel of Instagarm to the comment section
         let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
         let attributedString = NSMutableAttributedString(string:username, attributes:attrs)
-        let normalString = NSMutableAttributedString(string:text)
+        let normalString = NSMutableAttributedString(string:" \(text)")
         attributedString.append(normalString)
         
         self.usernameCommentLbl.attributedText = attributedString

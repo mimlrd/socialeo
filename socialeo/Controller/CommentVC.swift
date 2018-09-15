@@ -20,11 +20,11 @@ class CommentVC: UIViewController {
     
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     
-    var comments: [InstaComment]?
+    private var comments: [InstaComment]?
     
-    var selectedPostID: String? 
+    var selectedPostID: String?
     
-    let cellName = IDENTIFIERS.commentCellIdentifier
+    private let cellName = IDENTIFIERS.commentCellIdentifier
     
     
     lazy var layoutCell : UICollectionViewFlowLayout? = {
@@ -49,6 +49,9 @@ class CommentVC: UIViewController {
         setupNavBar()
         configureCollectionView()
         configureNotifications()
+        
+        // TODO: we can add a later date eaither an observer to show when new comments have been added to the server, the view will need to fetch them OR we can add a refresh function with a pull collectionView to reload
+        
     }
     
     fileprivate func performCommentDownload(){
@@ -64,13 +67,19 @@ class CommentVC: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        // Remove all the notification observers to avoid retain cycle -> memory leaks
         NotificationCenter.default.removeObserver(self)
     }
     
     private func setupNavBar() {
-        
-        self.navigationItem.title = "COMMENTS"
+        // Setup the title bar, we can customise the text here or add a logo instead
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width , height: view.frame.height ))
+        titleLabel.text = "comments"
+        titleLabel.textAlignment = .center
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.font = UIFont(name: "AvenirNext-Medium", size: 25)
+        titleLabel.textColor = .black
+        navigationItem.titleView = titleLabel
     }
     
     
@@ -83,8 +92,10 @@ class CommentVC: UIViewController {
     }
     
     func configureCollectionView() {
+        /// All collectionView configuration will be done here
+        /// it will be easier to maintain in the long run
         commentFeedCollection.dataSource = self
-        
+
         commentFeedCollection.alwaysBounceVertical = true
         let nib = UINib(nibName: IDENTIFIERS.nibCommentCell, bundle: nil)
         commentFeedCollection.register(nib, forCellWithReuseIdentifier: cellName)
@@ -154,6 +165,7 @@ class CommentVC: UIViewController {
 
 extension CommentVC: FinishDownloadDelegate {
     
+    // the custom delegate function which is called when the comments have been downloaded from the server
     func finishToDownloadPosts<T>(_ elements: [T]) {
         
         guard let download_comments = elements as? [InstaComment] else {return}
@@ -196,15 +208,22 @@ extension CommentVC: UITextViewDelegate {
 extension CommentVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.comments?.count ?? 6
+        return self.comments?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? CommentCell else {return UICollectionViewCell()} // Falling with grace if there is no cell available
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName, for: indexPath) as? CommentCell, let all_coments = comments else {return UICollectionViewCell()} // Falling with grace if there is no cell available
         
+        // Pasing the comment to the cell to display
+        cell.comment = all_coments[indexPath.row]
         
         return cell
     }
     
+
+    
+    
 }
+
+

@@ -6,9 +6,12 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
+
+/// An extension of the custom Modal protocol to expend the required functionalities
+/// Here we will animate the view representing the custom alert view, but also the view of the background.
+
 import Foundation
 import UIKit
-
 
 extension Modal where Self:UIView{
     

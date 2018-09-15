@@ -6,16 +6,14 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
+/// Build the custom alertview with the custom sizes, etc.
 import UIKit
 
 class CustomStatsAlert: UIView, Modal, AlertActionButtonDelegate {
     
-    
     var statsAlertView: CustomStatsAlertView = CustomStatsAlertView ()
     let backgroundView: UIView = UIView()
     private let alertLeadingSpace: CGFloat = 32
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -10,6 +10,7 @@ import Foundation
 
 
 protocol FinishDownloadDelegate: class {
-    /// protocol to let the observer views know that the post have been downloaded
+    /// protocol to let the observer views know that the elements have been downloaded
+    /// the function is made as a generic to make reusable with different objects
     func finishToDownloadPosts<T>(_ elements:[T])
 }

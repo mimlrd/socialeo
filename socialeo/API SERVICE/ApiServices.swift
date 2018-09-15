@@ -6,6 +6,10 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
+
+/// This clas is where all the related connections with the sever will be done
+/// This will make much easier to maintain and to find when something goes wrong.
+
 import Foundation
 
 class ApiServices: NSObject {
@@ -35,23 +39,15 @@ class ApiServices: NSObject {
                     for (key, value) in results {
                         // only get the value for the key data, as this is where data that interest us are
                         if key == "data" {
-                            //let dict = value as? [String: Any]
-                            
                             guard let valArray = value as? [Any] else {return}
-                            // print("+++++++++ value: \(valArray) +++++++")
                             self.setupTheValue(valArray)
-                            
-                            
-                            
                         }
-                        
-                        
-                        
                     }
                 }
                 
                 
             } catch {
+                // TODO: Here we can present an alert view letting the user know that something when wrong
                 print("Error -> \(error.localizedDescription)")
             }
             
@@ -63,15 +59,15 @@ class ApiServices: NSObject {
     
     private func setupTheValue(_ vals: [Any]) {
         
-        //var instaUser: InstaUser?
         var posts: [InstaPost] = [InstaPost]()
-        var nbrOfPosts: Int = 0
+        //Convenient variables
         var nbrOfLikes: Int = 0
         var nbrOfComments: Int = 0
         
         for val in vals {
             
-            //print("val: \(val)")
+            // assign the correct values to the convenients variables so it will be easier to maintain.
+            // the guard - continue will prevent that if a post has a missing info, the other post will still be downloaded and ommit the problematic post.
             
             guard let dict = val as? [String: Any],
                 let images = dict["images"] as? [String : Any],
@@ -150,26 +146,19 @@ class ApiServices: NSObject {
                 if let results = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any] {
                     
                     for (key, value) in results {
-                        // only get the value for the key data, as this is where data that interest us are
+                        // only get the value for the key "data", as this is where data that interest us are
                         
                         if key == "data" {
-                            //let dict = value as? [String: Any]
-                            print("comments: \(value)")
                             guard let valArray = value as? [Any] else {return}
-                            // print("+++++++++ value: \(valArray) +++++++")
-                            self.setupTheValue(valArray)
-                            
-                            
-                            
+                           self.setupTheCommentValues(valArray) // We call another function to make the code cleaner and easier to understand
                         }
-                        
-                        
-                        
+
                     }
                 }
                 
                 
             } catch {
+                // TODO: Here we can present an alert view letting the user know that something when wrong
                 print("Error -> \(error.localizedDescription)")
             }
             
@@ -178,5 +167,41 @@ class ApiServices: NSObject {
         task.resume()
         
     }
+    
+    
+    
+    private func setupTheCommentValues(_ vals: [Any]) {
+
+        var comments: [InstaComment] = [InstaComment]()
+        
+        for val in vals {
+        
+            guard let dict = val as? [String: Any]
+                 else {continue}
+            
+            if let from = dict["from"] as? [String: String],
+                let username = from["username"],
+                let id = dict["id"] as? String,
+                let timestamp = dict["created_time"] as? String,
+                let text = dict["text"] as? String {
+
+                let comment = InstaComment(id: id, timestamp: Double(timestamp)!, username: username, text: text)
+                comments.append(comment)
+            }
+            
+            
+        } // end of for loop
+        
+        
+        // Update the delegate so the observing view will know that the download is done
+        if let del = downloadDelegate {
+            
+            
+            del.finishToDownloadPosts(comments)
+        }
+        
+        
+    }
+    
 }
 

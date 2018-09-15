@@ -4,7 +4,13 @@
 //
 //  Created by Mike Milord on 14/09/2018.
 //  Copyright © 2018 First Republic. All rights reserved.
-//
+
+
+///  This file will keep all the constant of the app so
+///  as we use the differnt constants in differnt places,
+///  in case of any changes in a string we will only have one
+///  place to make the change and it will propagate to the rest
+///  of the app.
 
 import UIKit
 
@@ -23,7 +29,7 @@ struct IDENTIFIERS {
     static let feedCellIdentifier = "feedCell"
     static let nibFeedCell = "PostFeedCell"
     static let seguehomeVCToCommentVC = "pushSegueToCommentVC"
-    static let commentCellIdentifier = "commentCell"
+    static let commentCellIdentifier = "feedCommentCell"
     static let nibCommentCell = "CommentCell"
     static let marginTextViewHeight: CGFloat = 16
 

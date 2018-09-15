@@ -6,8 +6,9 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
-import UIKit
+/// Models to be used within the app
 
+import UIKit
 
 struct InstaPost {
     var id: String

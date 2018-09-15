@@ -29,6 +29,7 @@
 		042827AA214C8A5B003775C6 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A9214C8A5B003775C6 /* InputTextView.swift */; };
 		042827AD214C8F51003775C6 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827AB214C8F51003775C6 /* CommentCell.swift */; };
 		042827AE214C8F51003775C6 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042827AC214C8F51003775C6 /* CommentCell.xib */; };
+		04EA0D53214D33AD00A3D276 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA0D52214D33AD00A3D276 /* BaseView.swift */; };
 		3879D857A1C1B10B1B44B6C1 /* Pods_socialeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		042827A9214C8A5B003775C6 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		042827AB214C8F51003775C6 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		042827AC214C8F51003775C6 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		04EA0D52214D33AD00A3D276 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		6EC30E6E30C5019FC8664C6E /* Pods-socialeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.debug.xcconfig"; sourceTree = "<group>"; };
 		7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socialeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2FC9C36A8D4079D8F81AE4 /* Pods-socialeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		0428279E214C5EC1003775C6 /* Custom Alert */ = {
 			isa = PBXGroup;
 			children = (
+				04EA0D52214D33AD00A3D276 /* BaseView.swift */,
 				0428279F214C5F08003775C6 /* Modal.swift */,
 				042827A1214C5F41003775C6 /* AlertProtocol.swift */,
 				042827A3214C5FEC003775C6 /* CustomStatsAlertView.swift */,
@@ -313,6 +316,7 @@
 				042827A2214C5F41003775C6 /* AlertProtocol.swift in Sources */,
 				042827A4214C5FEC003775C6 /* CustomStatsAlertView.swift in Sources */,
 				042827A0214C5F08003775C6 /* Modal.swift in Sources */,
+				04EA0D53214D33AD00A3D276 /* BaseView.swift in Sources */,
 				0428278D214C22CF003775C6 /* CommentVC.swift in Sources */,
 				04282795214C2E5D003775C6 /* ApiServices.swift in Sources */,
 				0428279D214C5768003775C6 /* Extentions.swift in Sources */,

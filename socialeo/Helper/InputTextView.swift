@@ -6,8 +6,10 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
-import UIKit
+/// A class extension where new functionalitie such as placeholder, remove placeholder
+/// for the textView class. This class mimic the placeholder of the textField.
 
+import UIKit
 
 class InputTextView: UITextView {
     
