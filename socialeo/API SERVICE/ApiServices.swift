@@ -65,6 +65,9 @@ class ApiServices: NSObject {
         
         //var instaUser: InstaUser?
         var posts: [InstaPost] = [InstaPost]()
+        var nbrOfPosts: Int = 0
+        var nbrOfLikes: Int = 0
+        var nbrOfComments: Int = 0
         
         for val in vals {
             
@@ -99,14 +102,23 @@ class ApiServices: NSObject {
                 
                 posts.append(post)
                 
+                // add the number of likes and comments in each post for the stata
+                nbrOfLikes += likeCount
+                nbrOfComments += commentCount
+                
                 
             }// end of if
             
             
         } // end of for loop
         
-        // Update the delegate so the observing view will know that the download is done
+        // Now create a dictionary object to save in the user default so other view could accesss
+        let socialDictionary: [String:Int] = ["nbrOfPosts": posts.count, "nbrOfLikes": nbrOfLikes, "nbrOfComments": nbrOfComments]
+        print("social dictionary: \(socialDictionary)")
+        // Save to the userdefault
+        UserDefaults.standard.set(socialDictionary, forKey: "socialStats")
         
+        // Update the delegate so the observing view will know that the download is done
         if let del = downloadDelegate {
            
             

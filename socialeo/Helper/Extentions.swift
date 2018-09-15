@@ -78,3 +78,15 @@ extension UIImageView {
     }
     
 }
+
+extension String{
+    
+    func setCorrectForm(forNumnerOfElement nbrOfElement: Int, theSingularWord word:String) -> String {
+        
+        if nbrOfElement > 1 {
+            return "\(word)s"
+        }
+        
+        return word
+    }
+}

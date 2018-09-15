@@ -54,5 +54,19 @@ struct InstaComment {
     }
 }
 
+struct SocialStat {
+    
+    var nbrOfPost: Int
+    var nbrOfLike: Int
+    var nbrOfComment: Int
+    
+    init(nbrOfPost: Int, nbrOfLike: Int, nbrOfComment: Int ) {
+        
+        self.nbrOfPost = nbrOfPost
+        self.nbrOfLike = nbrOfLike
+        self.nbrOfComment = nbrOfComment
+    }
+}
+
 
 

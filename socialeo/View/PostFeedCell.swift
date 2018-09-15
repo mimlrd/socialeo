@@ -67,17 +67,9 @@ class PostFeedCell: UITableViewCell {
             downloadPostAuthorInfo(forImageView: postUserImageView, withImageUrl: avatar_url)
             downloadPostAuthorInfo(forImageView: postImageView, withImageUrl: postImage_url)
             
-            var likes = NSLocalizedString("like", comment: "like_singular")
-            var comments = NSLocalizedString("comment", comment: "comment_singular")
+            let likeStr = NSLocalizedString("like", comment: "like_singular")
+            let commentStr = NSLocalizedString("comment", comment: "comment_singular")
             var viewComments = ""
-            if nbr_like > 1 {
-                likes = NSLocalizedString("likes", comment: "likes")
-            }
-            
-            if nbr_comment > 1 {
-                comments = NSLocalizedString("comments", comment: "comments")
-            }
-            
             if nbr_comment > 0 {
                 viewComments = NSLocalizedString("View all", comment: "view_all_comment")
             }
@@ -87,10 +79,12 @@ class PostFeedCell: UITableViewCell {
             self.postCaptionLbl.text = text
             self.postCaptionLbl.text = "\(username): \(text)"
             self.postUserFullNameLbl.text = fullName.lowercased()
-            self.postNbrLikeLbl.text = "\(nbr_like) \(likes)"
-            self.postNbrCommentLbl.text = "\(viewComments) \(nbr_comment) \(comments)"
+            self.postNbrLikeLbl.text = "\(nbr_like) \(likeStr.setCorrectForm(forNumnerOfElement: nbr_like, theSingularWord: likeStr))"
+            self.postNbrCommentLbl.text = "\(viewComments) \(nbr_comment) \(commentStr.setCorrectForm(forNumnerOfElement: nbr_comment, theSingularWord: commentStr))"
             self.postDateLbl.text = date.getElapsedInterval()
         }
+        
+        addGestureReconizerToViews()
     }
     
     
@@ -102,6 +96,45 @@ class PostFeedCell: UITableViewCell {
         }
     
     
+    fileprivate func addGestureReconizerToViews(){
+        
+        // First the views need to accept interaction with the user
+        self.postImageView.isUserInteractionEnabled = true
+        self.postNbrCommentLbl.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        tapGesture.numberOfTapsRequired = 1
+        self.postNbrCommentLbl.addGestureRecognizer(tapGesture)
+        
+        let tabImageGesture = UITapGestureRecognizer(target: self, action: #selector(handleZoomTap(_:)))
+        tabImageGesture.numberOfTapsRequired = 1
+        self.postImageView.addGestureRecognizer(tabImageGesture)
+    }
+    
+    @objc private func handleTapGesture() {
+        
+        /// Let the HomeVC know that the user has tapped the label and want to segue to CommentVC
+        print("want to segue")
+        
+        if let homeViewController = homeVC {
+            
+           
+        }
+        
+    
+    }
+    
+    @objc private func handleZoomTap(_ tapGesture: UITapGestureRecognizer) {
+        guard let imageView = tapGesture.view as? UIImageView  else {return }
+        
+        if let homeViewController = homeVC {
+            
+            homeViewController.performZoomInForStartingImageView(imageView)
+        }
+    }
+    
+    
+
     
     
     

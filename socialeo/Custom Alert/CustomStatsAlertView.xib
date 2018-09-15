@@ -40,7 +40,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gd6-xd-foa">
-                            <rect key="frame" x="20" y="130.5" width="335" height="66"/>
+                            <rect key="frame" x="20" y="125.5" width="335" height="66"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1500 posts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHU-vb-NUo">
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="22"/>
@@ -63,8 +63,11 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aed-tq-hYX">
-                            <rect key="frame" x="20" y="216.5" width="335" height="35.5"/>
+                            <rect key="frame" x="20" y="222" width="335" height="30"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="A4H-6H-OE8"/>
+                            </constraints>
                             <state key="normal" title="DONE">
                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -76,14 +79,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="aed-tq-hYX" firstAttribute="trailing" secondItem="mbi-kg-Nlw" secondAttribute="trailing" id="1fg-hO-0tk"/>
-                        <constraint firstItem="aed-tq-hYX" firstAttribute="top" secondItem="Gd6-xd-foa" secondAttribute="bottom" constant="20" id="2BF-9b-0gJ"/>
+                        <constraint firstItem="aed-tq-hYX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gd6-xd-foa" secondAttribute="bottom" constant="20" id="2BF-9b-0gJ"/>
                         <constraint firstItem="Gd6-xd-foa" firstAttribute="trailing" secondItem="mbi-kg-Nlw" secondAttribute="trailing" id="7Ql-nK-Zgu"/>
                         <constraint firstItem="Zes-DS-Xk7" firstAttribute="centerX" secondItem="389-C3-sOf" secondAttribute="centerX" id="7Vs-JS-4P9"/>
                         <constraint firstItem="mbi-kg-Nlw" firstAttribute="leading" secondItem="389-C3-sOf" secondAttribute="leading" constant="20" id="LFP-RG-h1y"/>
                         <constraint firstItem="Gd6-xd-foa" firstAttribute="leading" secondItem="mbi-kg-Nlw" secondAttribute="leading" id="PVV-gw-DWf"/>
                         <constraint firstItem="Zes-DS-Xk7" firstAttribute="top" secondItem="389-C3-sOf" secondAttribute="top" constant="15" id="S4H-fx-TKr"/>
                         <constraint firstItem="mbi-kg-Nlw" firstAttribute="top" secondItem="Zes-DS-Xk7" secondAttribute="bottom" constant="10" id="VxV-JM-rVK"/>
-                        <constraint firstItem="Gd6-xd-foa" firstAttribute="top" secondItem="mbi-kg-Nlw" secondAttribute="bottom" constant="25" id="oHh-pT-PC9"/>
+                        <constraint firstItem="Gd6-xd-foa" firstAttribute="top" secondItem="mbi-kg-Nlw" secondAttribute="bottom" constant="20" id="oHh-pT-PC9"/>
                         <constraint firstItem="aed-tq-hYX" firstAttribute="leading" secondItem="mbi-kg-Nlw" secondAttribute="leading" id="pRH-P7-k20"/>
                         <constraint firstAttribute="bottom" secondItem="aed-tq-hYX" secondAttribute="bottom" constant="15" id="uov-Hx-YJN"/>
                         <constraint firstAttribute="trailing" secondItem="mbi-kg-Nlw" secondAttribute="trailing" constant="20" id="zxc-Kd-Unk"/>

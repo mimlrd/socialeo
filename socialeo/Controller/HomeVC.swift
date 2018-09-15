@@ -19,7 +19,11 @@ class HomeVC: UIViewController {
     // Variables
     var currentUser: InstaUser?
     var posts: [InstaPost] = [InstaPost]() // It might not have any post available
-    
+    var startingFrame: CGRect?
+    var blackBackgroundView: UIView?
+    var startingImageView: UIImageView?
+    var isZooming: Bool = false
+    var originalImageCenter:CGPoint?
     
     
     override func viewDidLoad() {
@@ -63,7 +67,7 @@ class HomeVC: UIViewController {
         
         let statsImage = UIImage(named: "stats.png")
         
-        let statsBarBtn = UIBarButtonItem(image: statsImage, style: .plain, target: self, action: #selector(pushFilterButton))
+        let statsBarBtn = UIBarButtonItem(image: statsImage, style: .plain, target: self, action: #selector(pushStatsButton))
         statsBarBtn.tintColor = .black // Change the colour to black to adapt to the feel and look of the app
     
         
@@ -71,8 +75,27 @@ class HomeVC: UIViewController {
     }
     
     
-    @objc fileprivate func pushFilterButton(){
+    @objc fileprivate func pushStatsButton(){
+        getTheSocialStatsForUser()
 
+    }
+    
+    private func getTheSocialStatsForUser(){
+        
+        guard let socialStatsDict  = UserDefaults.standard.dictionary(forKey: "socialStats") as? [String:Int] else {return}
+        
+        if let nbrofPost = socialStatsDict["nbrOfPosts"],
+            let nbrOfLike = socialStatsDict["nbrOfLikes"],
+            let nbrOfComment = socialStatsDict["nbrOfComments"]  {
+            
+            // we will create the social stats object to pass to the alert view
+            let socialStats = SocialStat(nbrOfPost: nbrofPost , nbrOfLike: nbrOfLike , nbrOfComment: nbrOfComment )
+            
+            let alert = CustomStatsAlert(forSocialStats: socialStats)
+            alert.show(animated: true)
+            
+            
+        }
     }
     
     
@@ -119,6 +142,7 @@ extension HomeVC: UITableViewDataSource {
         
         
         cell.instaPost = posts[indexPath.row]
+        cell.homeVC = self // to allow the cell to call specific functions
         
         return cell
     }
@@ -156,6 +180,122 @@ extension HomeVC: UITableViewDelegate {
         
         return 0.0
     }
+}
+
+extension HomeVC: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    
+    // custom zooming logic
+    func performZoomInForStartingImageView(_ startingImageView: UIImageView) {
+        
+        self.startingImageView = startingImageView
+        self.startingImageView?.isHidden = true
+        
+        startingFrame = startingImageView.superview?.convert(startingImageView.frame, to: nil)
+        
+        let zoomingImageView = UIImageView(frame: startingFrame!)
+        zoomingImageView.backgroundColor = UIColor.red
+        zoomingImageView.image = startingImageView.image
+        zoomingImageView.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleZoomOut))
+        tapGesture.numberOfTapsRequired = 1
+        zoomingImageView.addGestureRecognizer(tapGesture)
+        
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
+        pinch.delegate = self
+        zoomingImageView.addGestureRecognizer(pinch)
+        
+        if let keyWindow = UIApplication.shared.keyWindow {
+            blackBackgroundView = UIView(frame: keyWindow.frame)
+            blackBackgroundView?.backgroundColor = UIColor.black
+            blackBackgroundView?.alpha = 0
+            keyWindow.addSubview(blackBackgroundView!)
+            
+            keyWindow.addSubview(zoomingImageView)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                
+                self.blackBackgroundView?.alpha = 1
+                
+                // math?
+                // h2 / w1 = h1 / w1
+                // h2 = h1 / w1 * w1
+                let height = self.startingFrame!.height / self.startingFrame!.width * keyWindow.frame.width
+                
+                zoomingImageView.frame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
+                
+                zoomingImageView.center = keyWindow.center
+                
+            }, completion: { (completed) in
+                // do nothing
+            })
+            
+        }
+    }
+    
+    @objc func handleZoomOut(_ tapGesture: UITapGestureRecognizer) {
+        if let zoomOutImageView = tapGesture.view {
+            //need to animate back out to controller
+            zoomOutImageView.clipsToBounds = true
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                
+                zoomOutImageView.frame = self.startingFrame!
+                self.blackBackgroundView?.alpha = 0
+                
+            }, completion: { (completed) in
+                zoomOutImageView.removeFromSuperview()
+                self.startingImageView?.isHidden = false
+            })
+        }
+    }
+    
+    
+    @objc func pinch(sender:UIPinchGestureRecognizer) {
+        
+        guard let imageView = sender.view  else {return}
+        
+        if sender.state == .began {
+            let currentScale = imageView.frame.size.width / imageView.bounds.size.width
+            let newScale = currentScale*sender.scale
+            if newScale > 1 {
+                self.isZooming = true
+            }
+        } else if sender.state == .changed {
+            guard let view = sender.view else {return}
+            let pinchCenter = CGPoint(x: sender.location(in: view).x - view.bounds.midX,
+                                      y: sender.location(in: view).y - view.bounds.midY)
+            let transform = view.transform.translatedBy(x: pinchCenter.x, y: pinchCenter.y)
+                .scaledBy(x: sender.scale, y: sender.scale)
+                .translatedBy(x: -pinchCenter.x, y: -pinchCenter.y)
+            let currentScale = imageView.frame.size.width / imageView.bounds.size.width
+            var newScale = currentScale*sender.scale
+            if newScale < 1 {
+                newScale = 1
+                let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+                imageView.transform = transform
+                sender.scale = 1
+            }else {
+                view.transform = transform
+                sender.scale = 1
+            }
+        } else if sender.state == .ended || sender.state == .failed || sender.state == .cancelled {
+            guard let center = self.originalImageCenter else {return}
+            UIView.animate(withDuration: 0.3, animations: {
+                imageView.transform = CGAffineTransform.identity
+                imageView.center = center
+            }, completion: { _ in
+                self.isZooming = false
+            })
+        }
+    }
+    
+
 }
 
 

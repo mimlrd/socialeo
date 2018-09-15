@@ -32,7 +32,7 @@ class CustomStatsAlertView: UIView {
     }
     
     private func commonInit(){
-        Bundle.main.loadNibNamed("CommonAlertView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("CustomStatsAlertView", owner: self, options: nil)
         addSubview(customStatsAlertView)
         customStatsAlertView.frame = self.bounds
         customStatsAlertView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

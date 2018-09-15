@@ -28,16 +28,16 @@ class CustomStatsAlert: UIView, Modal, AlertActionButtonDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init (title:String, message: String) {
+    convenience init (forSocialStats socialStats: SocialStat) {
         self.init(frame: UIScreen.main.bounds)
         
-        initialize(forAlertTitle: title, withMessage: message)
+        initialize(forSocialStats: socialStats)
         
         
     }
     
     
-    func initialize(forAlertTitle title:String, withMessage message: String){
+    func initialize(forSocialStats socialStats: SocialStat){
         
         self.statsAlertView.clipsToBounds = true
         self.statsAlertView.delegate = self
@@ -49,15 +49,15 @@ class CustomStatsAlert: UIView, Modal, AlertActionButtonDelegate {
         backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedOnBackgroundView)))
         addSubview(backgroundView)
         
-        setupAlertView(forAlertTitle: title, withMessage: message)
+        setupAlertView(withStatistics: socialStats)
     }
     
     
-    fileprivate func setupAlertView(forAlertTitle title:String, withMessage message: String) {
+    fileprivate func setupAlertView(withStatistics stats: SocialStat) {
         
         /* -------- Setup the dialogue view ----------- */
         let alertViewWidth = frame.width - (alertLeadingSpace * 2)
-        let alertViewHeight = frame.height * 0.4
+        let alertViewHeight = frame.height * 0.35
         self.statsAlertView.frame.origin = CGPoint(x: alertLeadingSpace, y: frame.height)
         self.statsAlertView.frame.size = CGSize(width: alertViewWidth, height: alertViewHeight)
         self.statsAlertView.backgroundColor = UIColor.white
@@ -66,7 +66,17 @@ class CustomStatsAlert: UIView, Modal, AlertActionButtonDelegate {
         
         
         //Setup title and message
+        let nbrOfPost = stats.nbrOfPost
+        let nbrOfLike = stats.nbrOfLike
+        let nbrOfComment = stats.nbrOfComment
         
+        let postStr = NSLocalizedString("post", comment: "post_singular")
+        let likeStr = NSLocalizedString("like", comment: "like_singular")
+        let commentStr = NSLocalizedString("comment", comment: "comment_singular")
+        
+        self.statsAlertView.nbrOfPostsLbl.text = "\(nbrOfPost) \(postStr.setCorrectForm(forNumnerOfElement: nbrOfPost, theSingularWord: postStr))"
+        self.statsAlertView.nbrOfLikesLbl.text = "\(nbrOfLike) \(likeStr.setCorrectForm(forNumnerOfElement: nbrOfLike, theSingularWord: likeStr))"
+        self.statsAlertView.nbrOfCommentsLbl.text = "\(nbrOfComment) \(commentStr.setCorrectForm(forNumnerOfElement: nbrOfComment, theSingularWord: commentStr))"
         
     }
     
