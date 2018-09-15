@@ -77,7 +77,7 @@ class ApiServices: NSObject {
                 let likes = dict["likes"] as? [String : Int],
                 let comments = dict["comments"] as? [String : Int] else {continue}
             
-            let caption = dict["caption"] as? [String : Any] ?? ["text":""]
+            let caption = dict["caption"] as? [String : Any] ?? ["text":"did not add a caption"]
             
             
             if let fullName = user["full_name"] as? String,

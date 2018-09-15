@@ -81,7 +81,7 @@ class PostFeedCell: UITableViewCell {
             
             
             self.postCaptionLbl.text = text
-            self.postCaptionLbl.text = "\(username): \(text)"
+            self.postCaptionLbl.attributedText = "".twoPartAttributeString(forFirstPartText: username, theOtherPart: text, withFontName: "AvenirNext-Medium", andFontSize: 15)
             self.postUserFullNameLbl.text = fullName.lowercased()
             self.postNbrLikeLbl.text = "\(nbr_like) \(likeStr.setCorrectForm(forNumnerOfElement: nbr_like, theSingularWord: likeStr))"
             self.postNbrCommentLbl.text = "\(viewComments) \(nbr_comment) \(commentStr.setCorrectForm(forNumnerOfElement: nbr_comment, theSingularWord: commentStr))"

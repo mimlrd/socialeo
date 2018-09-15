@@ -47,13 +47,7 @@ class CommentCell: UICollectionViewCell {
         let timestamp = my_comment.timestamp
         let date = Date(timeIntervalSince1970: timestamp)
         
-        // Give a feel of Instagarm to the comment section
-        let attrs = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 15)]
-        let attributedString = NSMutableAttributedString(string:username, attributes:attrs)
-        let normalString = NSMutableAttributedString(string:" \(text)")
-        attributedString.append(normalString)
-        
-        self.usernameCommentLbl.attributedText = attributedString
+        self.usernameCommentLbl.attributedText = "".twoPartAttributeString(forFirstPartText: username, theOtherPart: text, withFontName: "AvenirNext-Medium", andFontSize: 15)
         self.commentDateLbl.text = date.getElapsedInterval()
         
         

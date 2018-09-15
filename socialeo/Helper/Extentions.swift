@@ -84,6 +84,16 @@ extension UIImageView {
 
 extension String{
     
+    func twoPartAttributeString(forFirstPartText firstPart: String, theOtherPart secondPart: String, withFontName fontName: String, andFontSize size: CGFloat) -> NSMutableAttributedString{
+        
+        let attrs = [NSAttributedStringKey.font : UIFont(name: fontName, size: size)!]
+        let attributedString = NSMutableAttributedString(string:firstPart, attributes:attrs)
+        let normalString = NSMutableAttributedString(string:" \(secondPart)")
+        attributedString.append(normalString)
+        
+        return attributedString
+    }
+    
     func setCorrectForm(forNumnerOfElement nbrOfElement: Int, theSingularWord word:String) -> String {
         
         if nbrOfElement > 1 {
