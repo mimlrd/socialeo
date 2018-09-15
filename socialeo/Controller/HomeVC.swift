@@ -99,8 +99,29 @@ class HomeVC: UIViewController {
     }
     
     
+    //Mark: - segue to the commentVC
+    
+    
+    func pushView() {
+        self.performSegue(withIdentifier: IDENTIFIERS.seguehomeVCToCommentVC, sender: self)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == IDENTIFIERS.seguehomeVCToCommentVC {
+            if let vc = segue.destination as? CommentVC {
+                
+               // vc.comments =
+            }
+        }
+        
+    }
+    
+    
     
 }
+
+
 
 extension HomeVC: FinishDownloadDelegate {
     
@@ -183,6 +204,7 @@ extension HomeVC: UITableViewDelegate {
 }
 
 extension HomeVC: UIGestureRecognizerDelegate {
+
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

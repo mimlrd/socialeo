@@ -6,7 +6,7 @@
 //  Copyright © 2018 First Republic. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct INSTABASE_IDS {
     
@@ -22,5 +22,9 @@ struct IDENTIFIERS {
     
     static let feedCellIdentifier = "feedCell"
     static let nibFeedCell = "PostFeedCell"
+    static let seguehomeVCToCommentVC = "pushSegueToCommentVC"
+    static let commentCellIdentifier = "commentCell"
+    static let nibCommentCell = "CommentCell"
+    static let marginTextViewHeight: CGFloat = 16
 
 }

@@ -118,7 +118,7 @@ class PostFeedCell: UITableViewCell {
         
         if let homeViewController = homeVC {
             
-           
+           homeViewController.pushView()
         }
         
     

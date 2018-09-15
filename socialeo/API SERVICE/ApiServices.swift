@@ -114,7 +114,6 @@ class ApiServices: NSObject {
         
         // Now create a dictionary object to save in the user default so other view could accesss
         let socialDictionary: [String:Int] = ["nbrOfPosts": posts.count, "nbrOfLikes": nbrOfLikes, "nbrOfComments": nbrOfComments]
-        print("social dictionary: \(socialDictionary)")
         // Save to the userdefault
         UserDefaults.standard.set(socialDictionary, forKey: "socialStats")
         
@@ -126,7 +125,56 @@ class ApiServices: NSObject {
         }
         
         
+    }
+    
+    
+    
+    public func fetchCommentForPost(_ postId: String) {
         
+        let baseUrlStr = "\(INSTABASE_IDS.COMMENTURL_PART1)\(postId)\(INSTABASE_IDS.COMMENTURL_PART2)\(INSTABASE_IDS.ACCESSTOKEN)"
+        
+        guard let url = URL(string: baseUrlStr) else {return}
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            
+            if let err = error {
+                // check to see if there is an error while downloading data
+                print(err.localizedDescription)
+                return
+            }
+            
+            // No error so we can continue and parse our json
+            do {
+                if let results = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String:Any] {
+                    
+                    for (key, value) in results {
+                        // only get the value for the key data, as this is where data that interest us are
+                        if key == "data" {
+                            //let dict = value as? [String: Any]
+                            
+                            guard let valArray = value as? [Any] else {return}
+                            // print("+++++++++ value: \(valArray) +++++++")
+                            self.setupTheValue(valArray)
+                            
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }
+                }
+                
+                
+            } catch {
+                print("Error -> \(error.localizedDescription)")
+            }
+            
+        }
+        
+        task.resume()
         
     }
 }

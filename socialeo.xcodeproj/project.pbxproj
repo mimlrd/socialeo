@@ -26,6 +26,9 @@
 		042827A4214C5FEC003775C6 /* CustomStatsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A3214C5FEC003775C6 /* CustomStatsAlertView.swift */; };
 		042827A6214C6136003775C6 /* CustomStatsAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042827A5214C6136003775C6 /* CustomStatsAlertView.xib */; };
 		042827A8214C644F003775C6 /* CustomStatsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A7214C644F003775C6 /* CustomStatsAlert.swift */; };
+		042827AA214C8A5B003775C6 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827A9214C8A5B003775C6 /* InputTextView.swift */; };
+		042827AD214C8F51003775C6 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042827AB214C8F51003775C6 /* CommentCell.swift */; };
+		042827AE214C8F51003775C6 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042827AC214C8F51003775C6 /* CommentCell.xib */; };
 		3879D857A1C1B10B1B44B6C1 /* Pods_socialeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		042827A3214C5FEC003775C6 /* CustomStatsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStatsAlertView.swift; sourceTree = "<group>"; };
 		042827A5214C6136003775C6 /* CustomStatsAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomStatsAlertView.xib; sourceTree = "<group>"; };
 		042827A7214C644F003775C6 /* CustomStatsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStatsAlert.swift; sourceTree = "<group>"; };
+		042827A9214C8A5B003775C6 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		042827AB214C8F51003775C6 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		042827AC214C8F51003775C6 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		6EC30E6E30C5019FC8664C6E /* Pods-socialeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.debug.xcconfig"; sourceTree = "<group>"; };
 		7A94AFCBDD3547F24794D62B /* Pods_socialeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socialeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2FC9C36A8D4079D8F81AE4 /* Pods-socialeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socialeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-socialeo/Pods-socialeo.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 			children = (
 				0428278E214C22E9003775C6 /* Constant.swift */,
 				0428279C214C5768003775C6 /* Extentions.swift */,
+				042827A9214C8A5B003775C6 /* InputTextView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -144,6 +151,8 @@
 			children = (
 				04282798214C31B6003775C6 /* PostFeedCell.swift */,
 				04282799214C31B6003775C6 /* PostFeedCell.xib */,
+				042827AB214C8F51003775C6 /* CommentCell.swift */,
+				042827AC214C8F51003775C6 /* CommentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,6 +258,7 @@
 				042827A6214C6136003775C6 /* CustomStatsAlertView.xib in Resources */,
 				0428277F214C217D003775C6 /* LaunchScreen.storyboard in Resources */,
 				0428277C214C217D003775C6 /* Assets.xcassets in Resources */,
+				042827AE214C8F51003775C6 /* CommentCell.xib in Resources */,
 				0428277A214C217C003775C6 /* Main.storyboard in Resources */,
 				0428279B214C31B6003775C6 /* PostFeedCell.xib in Resources */,
 			);
@@ -306,6 +316,7 @@
 				0428278D214C22CF003775C6 /* CommentVC.swift in Sources */,
 				04282795214C2E5D003775C6 /* ApiServices.swift in Sources */,
 				0428279D214C5768003775C6 /* Extentions.swift in Sources */,
+				042827AA214C8A5B003775C6 /* InputTextView.swift in Sources */,
 				04282777214C217C003775C6 /* HomeVC.swift in Sources */,
 				04282793214C236C003775C6 /* User.swift in Sources */,
 				04282775214C217C003775C6 /* AppDelegate.swift in Sources */,
@@ -314,6 +325,7 @@
 				042827A8214C644F003775C6 /* CustomStatsAlert.swift in Sources */,
 				0428279A214C31B6003775C6 /* PostFeedCell.swift in Sources */,
 				04282791214C234B003775C6 /* Post.swift in Sources */,
+				042827AD214C8F51003775C6 /* CommentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
