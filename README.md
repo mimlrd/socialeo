@@ -1,4 +1,10 @@
 
+<p align="center">
+    <a href="https://gph.is/2xAvQdC">
+        <img src="https://gph.is/2xAvQdC" height="450">
+    </a>
+</p>
+
 # Project Title
 SOCIALEO - A test app for the mobile team at ENABLON
 
