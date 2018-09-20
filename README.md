@@ -1,7 +1,13 @@
 
 <p align="center">
     <a href="https://media.giphy.com/media/1wmOJCeIgpsfBhlSjE/giphy.gif">
-        <img src="https://media.giphy.com/media/1wmOJCeIgpsfBhlSjE/giphy.gif" height="350">
+        <img src="https://media.giphy.com/media/1wmOJCeIgpsfBhlSjE/giphy.gif" height="250">
+    </a>
+</p>
+
+<p align="center">
+    <a href="https://i.imgur.com/G94wjnA.gif">
+        <img src="https://i.imgur.com/G94wjnA.gif" height="250">
     </a>
 </p>
 
