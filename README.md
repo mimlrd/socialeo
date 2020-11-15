@@ -17,6 +17,7 @@
 
 # Project Title
 SOCIALEO - A test app for the mobile team at ENABLON
+https://enablon.com/
 
 # Assignment
 Create a mobile app with one view showing the list of the most recent photos posted on Instagram with the account below, following these guidelines:
@@ -26,7 +27,7 @@ Create a mobile app with one view showing the list of the most recent photos pos
 - list must be built to show any number of photos
 
 # Getting Started
-This is a test app as part of the interview process at **ENABLON France**. 
+This is a test app for the mobile team at **ENABLON France**. 
 To get started you will need to have a valid Account access token to connect to Instagram API and minimum iOS 11.4 installed and Xcode 9.0.
 
 ## Others adding more features to the app
